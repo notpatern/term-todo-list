@@ -1,3 +1,0 @@
-F:/work/todolist/build/CMakeFiles/todolist.dir
-F:/work/todolist/build/CMakeFiles/edit_cache.dir
-F:/work/todolist/build/CMakeFiles/rebuild_cache.dir
