@@ -1,0 +1,14 @@
+[
+{
+  "directory": "F:/work/todolist/build",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\clang.exe   -g -Wno-format-security -Wno-deprecated-declarations -Wno-format-nonliteral -O0 -g -Xclang -gcodeview -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -std=c++23 -o CMakeFiles\\todolist.dir\\todolist\\src\\App\\app.cpp.obj -c F:\\work\\todolist\\todolist\\src\\App\\app.cpp",
+  "file": "F:/work/todolist/todolist/src/App/app.cpp",
+  "output": "CMakeFiles/todolist.dir/todolist/src/App/app.cpp.obj"
+},
+{
+  "directory": "F:/work/todolist/build",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\clang.exe   -g -Wno-format-security -Wno-deprecated-declarations -Wno-format-nonliteral -O0 -g -Xclang -gcodeview -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -std=c++23 -o CMakeFiles\\todolist.dir\\todolist\\src\\main.cpp.obj -c F:\\work\\todolist\\todolist\\src\\main.cpp",
+  "file": "F:/work/todolist/todolist/src/main.cpp",
+  "output": "CMakeFiles/todolist.dir/todolist/src/main.cpp.obj"
+}
+]
