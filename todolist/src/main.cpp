@@ -8,6 +8,7 @@ int main(int argc, char *argv[]) {
 
     while (!isRunning) {
         isRunning = app.Run();
+
         if (isRunning != 0) {
             std::cout << "Error code: " << isRunning << "\n\r";
             return isRunning;
