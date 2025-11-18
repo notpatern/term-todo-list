@@ -9,8 +9,8 @@ App::~App() {
 }
 
 int App::Run() {
-    currentMotion = getCurrentMotion();
-    std::cout << currentMotion << std::endl;
+    commandLine.Run(getCharacter());
+    renderer.Run();
     return 0;
 }
 
@@ -57,6 +57,10 @@ char App::getCurrentMotion() {
     char result{};
 
     result = getCharacter();
+
+    if (!(result == 'h' || result == 'j' || result == 'k' || result == 'l')) {
+        return result;
+    }
 
     return result;
 }

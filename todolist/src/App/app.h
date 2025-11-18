@@ -1,6 +1,7 @@
 #pragma once
 
-#include <iostream>
+#include "CommandLine/commandLine.h"
+#include "../Render/renderer.h"
 
 #ifdef _WIN32
 #include <conio.h>
@@ -10,6 +11,8 @@ class App {
 private:
     int returnCode{0};
     char currentMotion;
+    CommandLine commandLine{};
+    Renderer& renderer = Renderer::getInstance();
 
     char getCurrentMotion();
     char getCharacter();
