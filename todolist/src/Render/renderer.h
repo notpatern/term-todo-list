@@ -1,5 +1,6 @@
 #pragma once
 
+#include <algorithm>
 #include <vector>
 #include "../Utility/Vector2.h"
 #include "renderable.h"

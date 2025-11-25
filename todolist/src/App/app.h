@@ -7,6 +7,11 @@
 #include <conio.h>
 #endif
 
+#ifdef __linux__
+#include <termios.h>
+#include <unistd.h>
+#endif
+
 class App {
 private:
     int returnCode{0};
