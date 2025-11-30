@@ -1,12 +1,29 @@
 #include "renderer.h"
 #include "renderable.h"
+#include <algorithm>
+#include <wincrypt.h>
 
 Renderer::Renderer() {
     getTermDim(terminalDimensions);
+    SetFrameBuffer();
 }
 
 Renderer::~Renderer() {
+    for (int y = 0; y < terminalDimensions.y; y++) {
+        delete[] frameBuffer[y];
+    }
+    delete[] frameBuffer;
+}
 
+void Renderer::SetFrameBuffer() {
+    frameBuffer = new char*[terminalDimensions.y];
+    for (int y = 0; y < terminalDimensions.y; y++) {
+        frameBuffer[y] = new char[terminalDimensions.x];
+
+        for (int x = 0; x < terminalDimensions.x; x++) {
+            frameBuffer[y][x] = ' ';
+        }
+    }
 }
 
 void Renderer::getTermDim(Vector2<int>& dim) {
@@ -23,14 +40,25 @@ void Renderer::getTermDim(Vector2<int>& dim) {
 #endif
 }
 
-void Renderer::Run() {
-    for (Renderable* renderable : renderables) {
-        if (renderable->getVisible()) {
-            Render(renderable);
-        }
+void Renderer::FeedFrameBuffer() {
+    if (isCmd) {
+        frameBuffer[terminalDimensions.y - 1][0] = ':';
+    } else {
+        frameBuffer[terminalDimensions.y - 1][0] = ' ';
     }
 }
 
-void Renderer::Render(Renderable* renderable) {
-    std::cout << renderable->getContent() << "\n\r";
+void Renderer::Run() {
+    FeedFrameBuffer();
+    Render();
+}
+
+void Renderer::Render() {
+    for (int y = 0; y < terminalDimensions.y; y++) {
+        CursorGoTo(0, y);
+
+        for (int x = 0; x < terminalDimensions.x; x++) {
+            std::cout << frameBuffer[y][x];
+        }
+    }
 }

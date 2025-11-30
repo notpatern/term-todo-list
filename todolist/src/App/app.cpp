@@ -9,8 +9,8 @@ App::~App() {
 }
 
 int App::Run() {
-    commandLine.Run(getCharacter());
     renderer.Run();
+    commandLine.Run(getCharacter());
     return 0;
 }
 

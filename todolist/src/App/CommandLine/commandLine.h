@@ -19,12 +19,4 @@ public:
     ~CommandLine();
 
     void Run(const char character);
-    std::string_view getContent() override {
-        std::string_view newContent{};
-        std::string colon{":"};
-        std::string oldContent{content};
-
-        newContent = colon.append(oldContent);
-        return newContent;
-    }
 };

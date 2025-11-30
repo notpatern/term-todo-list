@@ -13,6 +13,7 @@
             "generator": "MinGW Makefiles",
             "binaryDir": "${sourceDir}/build",
             "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_CXX_FLAGS": "-g -Wno-format-security -Wno-deprecated-declarations -Wno-format-nonliteral",
                 "CMAKE_CXX_STANDARD": "23",
                 "CMAKE_CXX_STANDARD_REQUIRED": "YES",
@@ -28,7 +29,8 @@
             "generator": "MinGW Makefiles",
             "binaryDir": "${sourceDir}/build",
             "cacheVariables": {
-                "CMAKE_CXX_FLAGS": "-o3",
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_CXX_FLAGS": "-O3",
                 "CMAKE_CXX_STANDARD": "23",
                 "CMAKE_CXX_STANDARD_REQUIRED": "YES",
                 "CMAKE_CXX_EXTENSIONS": "OFF",
@@ -38,3 +40,4 @@
         }
     ]
 }
+

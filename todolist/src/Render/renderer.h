@@ -15,10 +15,22 @@
 
 class Renderer {
 private:
+    const char* CSI = "\033[";
+
     Vector2<int> terminalDimensions{};
     std::vector<Renderable*> renderables;
+    char** frameBuffer;
+    bool isCmd{false};
+
     void getTermDim(Vector2<int>& dim);
-    void Render(Renderable* renderable);
+    void SetFrameBuffer();
+    void FeedFrameBuffer();
+    void Render();
+
+    inline void CursorGoTo(int x, int y) {
+        std::cout << CSI << (y+1) << ";" << (x+1) << "H";
+    }
+
 
 public:
     static Renderer& getInstance() {
@@ -43,7 +55,11 @@ public:
         renderables.erase(iterator);
     }
 
-    Vector2<int> GetTerminalDimensions() {
+    inline Vector2<int> GetTerminalDimensions() {
         return terminalDimensions;
+    }
+
+    inline void SetCmdState(bool state) {
+        isCmd = state;
     }
 };

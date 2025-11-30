@@ -38,6 +38,7 @@ void CommandLine::Run(const char character) {
 void CommandLine::Open() {
     isOpened = true;
     isVisible = true;
+    Renderer::getInstance().SetCmdState(true);
     content = buffer;
 }
 
@@ -55,5 +56,6 @@ void CommandLine::Execute() {
 }
 
 void CommandLine::Abort() {
+    Renderer::getInstance().SetCmdState(false);
     Init();
 }
