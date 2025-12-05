@@ -1,7 +1,8 @@
 #include "renderer.h"
 #include "renderable.h"
 #include <algorithm>
-#include <wincrypt.h>
+#include <cstdlib>
+#include <string_view>
 
 Renderer::Renderer() {
     getTermDim(terminalDimensions);
@@ -46,11 +47,27 @@ void Renderer::FeedFrameBuffer() {
     } else {
         frameBuffer[terminalDimensions.y - 1][0] = ' ';
     }
+
+    for (Renderable* renderable : renderables) {
+        if (!renderable->getVisible()) {
+            continue;
+        }
+
+        std::string_view content = renderable->getContent();
+        Vector2<int>* position = renderable->getPostition();
+
+        int length = content.length();
+
+        for (int i = 0; i < length; i++) {
+            frameBuffer[position->y][position->x + i] = content[i];
+        }
+    }
 }
 
 void Renderer::Run() {
     FeedFrameBuffer();
     Render();
+    SetFrameBuffer();
 }
 
 void Renderer::Render() {

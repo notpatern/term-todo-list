@@ -11,6 +11,7 @@ CommandLine::~CommandLine() {
 }
 
 void CommandLine::Init() {
+    position = new Vector2<int>(1, Renderer::getInstance().GetTerminalDimensions().y - 1);
     layer = 0;
     isOpened = false;
     isVisible = false;
@@ -49,7 +50,7 @@ void CommandLine::Buffer(const char character) {
 
 void CommandLine::Execute() {
     isVisible = false;
-    if (buffer == "e") {
+    if (buffer == "q") {
         exit(0);
     }
     Abort();
